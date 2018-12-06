@@ -455,3 +455,53 @@ void LED_david(byte colorID, byte brightness)
   LED_set ( 10, 0,colorID,brightness);
 }
 
+// Gibt das Off-White Kreuz aus
+void LED_david(byte colorID, byte brightness)
+{
+  LED_set ( 0, 0,colorID,brightness);
+  LED_set ( 1, 0,colorID,brightness);
+  LED_set ( 2, 0,colorID,brightness);
+  LED_set ( 3, 0,colorID,brightness);
+  LED_set ( 7, 0,colorID,brightness);
+  LED_set ( 8, 0,colorID,brightness);
+  LED_set ( 9, 0,colorID,brightness);
+  LED_set ( 10, 0,colorID,brightness);
+  LED_set ( 0, 1,colorID,brightness);
+  LED_set ( 1, 1,colorID,brightness);
+  LED_set ( 9, 1,colorID,brightness);
+  LED_set ( 10, 1,colorID,brightness);
+  LED_set ( 0, 2,colorID,brightness);
+  LED_set ( 2, 2,colorID,brightness);
+  LED_set ( 8, 2,colorID,brightness);
+  LED_set ( 10, 2,colorID,brightness);
+  LED_set ( 0, 3,colorID,brightness);
+  LED_set ( 3, 3,colorID,brightness);
+  LED_set ( 10, 3,colorID,brightness);
+  LED_set ( 7, 3,colorID,brightness);
+  LED_set ( 4, 4,colorID,brightness);
+  LED_set ( 6, 4,colorID,brightness);
+  LED_set ( 5, 5,colorID,brightness);
+  LED_set ( 4, 6,colorID,brightness);
+  LED_set ( 6, 6,colorID,brightness);
+  LED_set ( 0, 7,colorID,brightness);
+  LED_set ( 3, 7,colorID,brightness);
+  LED_set ( 7, 7,colorID,brightness);
+  LED_set ( 10, 7,colorID,brightness);
+  LED_set ( 0, 8,colorID,brightness);
+  LED_set ( 2, 8,colorID,brightness);
+  LED_set ( 8, 8,colorID,brightness);
+  LED_set ( 10, 8,colorID,brightness);
+  LED_set ( 0, 9,colorID,brightness);
+  LED_set ( 1, 9,colorID,brightness);
+  LED_set ( 9, 9,colorID,brightness);
+  LED_set ( 10, 9,colorID,brightness);
+  LED_set ( 0, 10,colorID,brightness);
+  LED_set ( 1, 10,colorID,brightness);
+  LED_set ( 2, 10,colorID,brightness);
+  LED_set ( 3, 10,colorID,brightness);
+  LED_set ( 7, 10,colorID,brightness);
+  LED_set ( 8, 10,colorID,brightness);
+  LED_set ( 9, 10,colorID,brightness);
+  LED_set ( 10, 10,colorID,brightness);
+  
+}
