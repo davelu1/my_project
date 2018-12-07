@@ -35,4 +35,3 @@ void setRTC(int const RTCstunden, int const RTCminuten)
   Uhrzeit = DateTime(2002, 9, 15, (uint8_t)RTCstunden, (uint8_t)RTCminuten, 0); // Jahr, Monate, Tage, Stuunden, Minuten, Sekunden
   rtc.adjust(Uhrzeit); // Auf Echtzeituhr speichern
 }
-

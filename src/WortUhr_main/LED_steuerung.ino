@@ -504,3 +504,16 @@ void LED_OffWhite(byte colorID, byte brightness)
   LED_set ( 9, 10,colorID,brightness);
   LED_set ( 10, 10,colorID,brightness);
 }
+
+
+// Schreibt das Wort "SUPREME"
+void LED_Supreme(byte colorID, byte brightness)
+{
+  LED_set ( 4, 10,colorID,brightness);
+  LED_set ( 5, 9,colorID,brightness);
+  LED_set ( 7, 9,colorID,brightness);
+  LED_set ( 10, 8,colorID,brightness);
+  LED_set ( 0, 6,colorID,brightness);
+  LED_set ( 7, 1,colorID,brightness);
+  LED_set ( 10, 1,colorID,brightness);
+}

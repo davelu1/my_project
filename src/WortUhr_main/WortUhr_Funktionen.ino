@@ -326,11 +326,18 @@ void ampm_einstellen(void)
 }
 
 //Off-WHite Kreuz anzeigen
-
 void OffWhite_einstellen(void)
 {
   LED_clear();
   LED_OffWhite(colorID, brightness);
+}
+
+
+//Supreme anzeigen
+void Supreme_einstellen(void)
+{
+  LED_clear();
+  LED_Supreme(colorID, brightness);
 }
 
 

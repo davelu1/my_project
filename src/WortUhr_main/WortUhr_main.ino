@@ -53,7 +53,8 @@ typedef enum EEProm_store_t
     COLOR,
     HELLIGKEIT,
     AMPM,
-    OffWhite
+    OffWhite,
+    Supreme
 } EEProm_store;
 
 typedef enum FARBEN_t
@@ -195,12 +196,13 @@ void loop()  // Endlosschleife:
       inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
       sm_Button++; // sofort zum naechsten Schritt weiter
       break;
+      
 
 
 
 
-            
-    case 10: //Off White Kreuz
+
+     case 10: //Off White Kreuz
       OffWhite_einstellen();
       if (deltaDrehgeber != 0)
       {
@@ -208,16 +210,30 @@ void loop()  // Endlosschleife:
       }
       break;
       
+     case 11: // Off White speichern
+      inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
+      sm_Button++; // sofort zum naechsten Schritt weiter
+      break;
 
-      case 11: // AM/PM speichern
+
+     case 12: //Supreme
+      Supreme_einstellen();
+      if (deltaDrehgeber != 0)
+      {
+        inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen wenn Knopf gedreht
+      }
+      break;
+      
+     case 13: // Supreme speichern
       inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
       sm_Button++; // sofort zum naechsten Schritt weiter
       break;
 
 
 
+
       
-    case 12: // Reset Fancy Demo
+    case 14: // Reset Fancy Demo
       LED_clear();
       x=0;
       y=0;
@@ -225,7 +241,7 @@ void loop()  // Endlosschleife:
       sm_Button++; // sofort zum naechsten Schritt weiter
       break;
 
-    case 13: // Fancy Demo
+    case 15: // Fancy Demo
       fancy_demo();
       inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
       break;
