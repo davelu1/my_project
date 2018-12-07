@@ -325,6 +325,15 @@ void ampm_einstellen(void)
   }
 }
 
+//Off-WHite Kreuz anzeigen
+
+void OffWhite_einstellen(void)
+{
+  LED_clear();
+  LED_OffWhite(colorID, brightness);
+}
+
+
 // Eine kleine Demo zum Anzeigen der Farbmoeglichkeiten der LED
 void fancy_demo(void)
 {
@@ -407,4 +416,3 @@ void fancy_demo(void)
       farbe = 63;
     }
 }
-

@@ -456,7 +456,7 @@ void LED_david(byte colorID, byte brightness)
 }
 
 // Gibt das Off-White Kreuz aus
-void LED_david(byte colorID, byte brightness)
+void LED_OffWhite(byte colorID, byte brightness)
 {
   LED_set ( 0, 0,colorID,brightness);
   LED_set ( 1, 0,colorID,brightness);
@@ -503,5 +503,4 @@ void LED_david(byte colorID, byte brightness)
   LED_set ( 8, 10,colorID,brightness);
   LED_set ( 9, 10,colorID,brightness);
   LED_set ( 10, 10,colorID,brightness);
-  
 }

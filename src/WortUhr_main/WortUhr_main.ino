@@ -2,7 +2,7 @@
 #include <Adafruit_NeoPixel.h>  // Library für serielle LED Ansteuerung
 #include <EEPROM.h>             // Library für permanenten Speicher (Farbe, Helligkeit, AM/PM)
 #include <Wire.h>               // Library für serielle Schnittstelle zu Echtzeituhr (RTC)
-#include "RTClib.h"             // Library zum Speichern/Auslesen der Uhrdaten
+#include <RTClib.h>            // Library zum Speichern/Auslesen der Uhrdaten
 
 #ifdef __AVR__
   #include <avr/power.h>        // Library Arduino AVR
@@ -52,7 +52,8 @@ typedef enum EEProm_store_t
 {
     COLOR,
     HELLIGKEIT,
-    AMPM
+    AMPM,
+    OffWhite
 } EEProm_store;
 
 typedef enum FARBEN_t
@@ -191,12 +192,32 @@ void loop()  // Endlosschleife:
       break;
 
     case 9: // AM/PM speichern
-      EEPROM.update(AMPM, (int)(halbtage_anzeigen));
       inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
       sm_Button++; // sofort zum naechsten Schritt weiter
       break;
+
+
+
+
+            
+    case 10: //Off White Kreuz
+      OffWhite_einstellen();
+      if (deltaDrehgeber != 0)
+      {
+        inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen wenn Knopf gedreht
+      }
+      break;
       
-    case 10: // Reset Fancy Demo
+
+      case 11: // AM/PM speichern
+      inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
+      sm_Button++; // sofort zum naechsten Schritt weiter
+      break;
+
+
+
+      
+    case 12: // Reset Fancy Demo
       LED_clear();
       x=0;
       y=0;
@@ -204,7 +225,7 @@ void loop()  // Endlosschleife:
       sm_Button++; // sofort zum naechsten Schritt weiter
       break;
 
-    case 11: // Fancy Demo
+    case 13: // Fancy Demo
       fancy_demo();
       inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
       break;
@@ -215,4 +236,3 @@ void loop()  // Endlosschleife:
   }
   pixels.show(); // Started das Update saemtlicher LED.
 }
-
