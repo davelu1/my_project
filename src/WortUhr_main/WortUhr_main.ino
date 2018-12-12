@@ -56,7 +56,8 @@ typedef enum EEProm_store_t
     HELLIGKEIT,
     AMPM,
     OffWhite,
-    Supreme
+    FancyDemo,
+    Snake
 } EEProm_store;
 
 typedef enum FARBEN_t
@@ -97,7 +98,7 @@ void loop()  // Endlosschleife:
   if(Drehgeber_knopf_gedrueckt()) // Wurde Knopf gedrueckt?
   {
     sm_Button++;
-    if(sm_Button>11)
+    if(sm_Button>15)
     {
       sm_Button = 1;
     }
@@ -217,22 +218,8 @@ void loop()  // Endlosschleife:
       sm_Button++; // sofort zum naechsten Schritt weiter
       break;
 
-
-     case 12: //Supreme
-      Supreme_einstellen();
-      if (deltaDrehgeber != 0)
-      {
-        inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen wenn Knopf gedreht
-      }
-      break;
       
-     case 13: // Supreme speichern
-      inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
-      sm_Button++; // sofort zum naechsten Schritt weiter
-      break;
-
-      
-    case 14: // Reset Fancy Demo
+    case 12: // Reset Fancy Demo
       LED_clear();
       x=0;
       y=0;
@@ -240,10 +227,26 @@ void loop()  // Endlosschleife:
       sm_Button++; // sofort zum naechsten Schritt weiter
       break;
 
-    case 15: // Fancy Demo
+    case 13: // Fancy Demo
       fancy_demo();
       inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
       break;
+
+    
+
+     case 14: //Snake
+      Snake_einstellen();
+      if (deltaDrehgeber != 0)
+      {
+        inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen wenn Knopf gedreht
+      }
+      break;
+      
+     case 15: // Snake speichern
+      inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
+      sm_Button++; // sofort zum naechsten Schritt weiter
+      break;
+      
 
     default:
       sm_Button = 0;
