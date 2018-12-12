@@ -127,4 +127,3 @@ void updateEncoder()
 
   lastEncoded = encoded; //store this value for next time
 }
-

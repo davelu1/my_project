@@ -1,8 +1,10 @@
     // *** Externe Bibliotheken einlesen ***
 #include <Adafruit_NeoPixel.h>  // Library für serielle LED Ansteuerung
 #include <EEPROM.h>             // Library für permanenten Speicher (Farbe, Helligkeit, AM/PM)
+#include <LiquidCrystal.h>      // Library für snake
 #include <Wire.h>               // Library für serielle Schnittstelle zu Echtzeituhr (RTC)
 #include <RTClib.h>            // Library zum Speichern/Auslesen der Uhrdaten
+
 
 #ifdef __AVR__
   #include <avr/power.h>        // Library Arduino AVR
@@ -136,6 +138,7 @@ void loop()  // Endlosschleife:
       uhrzeit_anzeigen();
       inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
       break;
+
       
     case 2:
       uhrzeit_einstellen();
@@ -154,6 +157,7 @@ void loop()  // Endlosschleife:
       inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
       sm_Button++; // sofort zum naechsten Schritt weiter
       break;
+
       
     case 4: // Helligkeit
       helligkeit_einstellen();
@@ -169,6 +173,7 @@ void loop()  // Endlosschleife:
       inaktiv_time = act_time;
       sm_Button++; // sofort zum naechsten Schritt weiter
       break;
+
       
     case 6: // Farbe
       farbe_einstellen();
@@ -183,6 +188,7 @@ void loop()  // Endlosschleife:
       inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
       sm_Button++; // sofort zum naechsten Schritt weiter
       break;
+
       
     case 8: // AM/PM
       ampm_einstellen();
@@ -197,11 +203,7 @@ void loop()  // Endlosschleife:
       sm_Button++; // sofort zum naechsten Schritt weiter
       break;
       
-
-
-
-
-
+      
      case 10: //Off White Kreuz
       OffWhite_einstellen();
       if (deltaDrehgeber != 0)
@@ -228,9 +230,6 @@ void loop()  // Endlosschleife:
       inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
       sm_Button++; // sofort zum naechsten Schritt weiter
       break;
-
-
-
 
       
     case 14: // Reset Fancy Demo
