@@ -419,8 +419,8 @@ void fancy_demo(void)
 
 
 //Snake anzeigen
-void Snake_einstellen(void)
+ void Snake_einstellen(void)
 {
-  LED_clear();
+  LED_clear;
   LED_Snake(colorID, brightness);
 }

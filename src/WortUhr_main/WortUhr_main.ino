@@ -232,7 +232,6 @@ void loop()  // Endlosschleife:
       inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
       break;
 
-    
 
      case 14: //Snake
       Snake_einstellen();

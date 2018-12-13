@@ -1,6 +1,7 @@
 // Schreibt das Wort "Snake"
 void LED_Snake(byte colorID, byte brightness)
 {
-  LED_set( 5, 5,colorID,brightness);
+  x=1;
+  y=1;
+  LED_set( x, y,colorID,brightness);
 }
-if 
