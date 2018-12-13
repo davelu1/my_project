@@ -31,6 +31,11 @@ int                         deltaDrehgeber = 0;
 
 static int                  x=0;
 static int                  y=0;
+static int                  dx=0;
+static int                  dy=0;
+static int                  xkor=0;
+static int                  ykor=0;
+
 static byte                 part=0;
 
 static byte                 sm_Button = 0;      // Zustand der Statemachine. Wechselt mit jedem Knopfdruck
@@ -46,6 +51,7 @@ static bool                 halbtage_anzeigen = false;  // Halbtage anzeigen? (A
 byte                        halbtag = 0;        // Morgen = 0 (AM), Nachmittag = 1 (PM)
 
 unsigned long               act_time = 0;
+unsigned long               timesnake = 0;
 static unsigned long        intro_time = 0;
 static unsigned long        inaktiv_time = 0;
 static bool                 uhrzeit_verstellt = false;
@@ -56,8 +62,8 @@ typedef enum EEProm_store_t
     HELLIGKEIT,
     AMPM,
     OffWhite,
-    FancyDemo,
-    Snake
+    Snake,
+    FancyDemo
 } EEProm_store;
 
 typedef enum FARBEN_t
@@ -89,7 +95,7 @@ void loop()  // Endlosschleife:
 {
   // Aktuelle Uhrzeit bestimmen (stunden, minuten)
   act_time = millis();
-
+  
   if (!uhrzeit_verstellt) // Uhrzeit wurde NICHT verstellt
   {
     getRTC(&stunden, &minuten);
@@ -123,7 +129,7 @@ void loop()  // Endlosschleife:
   delay(20);                         // 20 millisekunden warten
 
  // Automatisches Verlassen des Bearbeitungsmodus nach 10 Sekunden
-  if ( (act_time - inaktiv_time) > 10000) // Sind bereits 10 Sekunden seit letztem Zurücksetzen vergangen?
+  if ( (act_time - inaktiv_time) > 1000000) // Sind bereits 10 Sekunden seit letztem Zurücksetzen vergangen?
   {
     sm_Button = 1; // Dann gehe zu case 1: Uhrzeit anzeigen
   }
@@ -218,22 +224,9 @@ void loop()  // Endlosschleife:
       sm_Button++; // sofort zum naechsten Schritt weiter
       break;
 
-      
-    case 12: // Reset Fancy Demo
+
+     case 12: //Snake
       LED_clear();
-      x=0;
-      y=0;
-      part=0;
-      sm_Button++; // sofort zum naechsten Schritt weiter
-      break;
-
-    case 13: // Fancy Demo
-      fancy_demo();
-      inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
-      break;
-
-
-     case 14: //Snake
       Snake_einstellen();
       if (deltaDrehgeber != 0)
       {
@@ -241,11 +234,25 @@ void loop()  // Endlosschleife:
       }
       break;
       
-     case 15: // Snake speichern
+     case 13: // Snake speichern
       inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
       sm_Button++; // sofort zum naechsten Schritt weiter
       break;
       
+      
+    case 14: // Reset Fancy Demo
+      LED_clear();
+      x=0;
+      y=0;
+      part=0;
+      sm_Button++; // sofort zum naechsten Schritt weiter
+      break;
+
+    case 15: // Fancy Demo
+      fancy_demo();
+      inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
+      break;
+
 
     default:
       sm_Button = 0;

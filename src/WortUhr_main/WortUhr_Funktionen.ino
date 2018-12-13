@@ -325,13 +325,20 @@ void ampm_einstellen(void)
   }
 }
 
-//Off-WHite Kreuz anzeigen
+//Off-White Kreuz anzeigen
 void OffWhite_einstellen(void)
 {
   LED_clear();
   LED_OffWhite(colorID, brightness);
 }
 
+
+//Snake anzeigen
+ void Snake_einstellen(void)
+{
+  LED_clear;
+  LED_Snake(colorID, brightness);
+}
 
 
 // Eine kleine Demo zum Anzeigen der Farbmoeglichkeiten der LED
@@ -415,12 +422,4 @@ void fancy_demo(void)
     {
       farbe = 63;
     }
-}
-
-
-//Snake anzeigen
- void Snake_einstellen(void)
-{
-  LED_clear;
-  LED_Snake(colorID, brightness);
 }
