@@ -31,11 +31,6 @@ int                         deltaDrehgeber = 0;
 
 static int                  x=0;
 static int                  y=0;
-static int                  xkor=2;
-static int                  ykor=5;
-static int                  dx=0;
-static int                  dy=0;
-static int                  Length=1;
 
 static byte                 part=0;
 
@@ -57,8 +52,13 @@ static unsigned long        intro_time = 0;
 static unsigned long        inaktiv_time = 0;
 static bool                 uhrzeit_verstellt = false;
 
-unsigned long               currentMillis = 0;
+unsigned long               currentMillis;
 
+static int xkor;
+static int ykor;
+static int dx;
+static int dy;
+static int lenth;
 
 typedef enum EEProm_store_t
 {
