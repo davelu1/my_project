@@ -1,13 +1,13 @@
-    // *** Externe Bibliotheken einlesen ***
+// *** Externe Bibliotheken einlesen ***
 #include <Adafruit_NeoPixel.h>  // Library für serielle LED Ansteuerung
 #include <EEPROM.h>             // Library für permanenten Speicher (Farbe, Helligkeit, AM/PM)
 #include <LiquidCrystal.h>      // Library für snake
 #include <Wire.h>               // Library für serielle Schnittstelle zu Echtzeituhr (RTC)
-#include <RTClib.h>            // Library zum Speichern/Auslesen der Uhrdaten
+#include <RTClib.h>             // Library zum Speichern/Auslesen der Uhrdaten
 
 
 #ifdef __AVR__
-  #include <avr/power.h>        // Library Arduino AVR
+#include <avr/power.h>        // Library Arduino AVR
 #endif
 
 
@@ -31,10 +31,11 @@ int                         deltaDrehgeber = 0;
 
 static int                  x=0;
 static int                  y=0;
+static int                  xkor=2;
+static int                  ykor=5;
 static int                  dx=0;
 static int                  dy=0;
-static int                  xkor=0;
-static int                  ykor=0;
+static int                  Length=1;
 
 static byte                 part=0;
 
@@ -55,6 +56,9 @@ unsigned long               timesnake = 0;
 static unsigned long        intro_time = 0;
 static unsigned long        inaktiv_time = 0;
 static bool                 uhrzeit_verstellt = false;
+
+unsigned long               currentMillis = 0;
+
 
 typedef enum EEProm_store_t
 {
@@ -217,6 +221,7 @@ void loop()  // Endlosschleife:
       {
         inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen wenn Knopf gedreht
       }
+      currentMillis = 0;
       break;
       
      case 11: // Off White speichern
