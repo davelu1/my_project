@@ -28,6 +28,7 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ80
 int                         colorID   = 16;
 int                         brightness = 10;
 int                         deltaDrehgeber = 0;
+int                         alphaDrehgeber = 0;
 
 static int                  x=0;
 static int                  y=0;
@@ -54,6 +55,9 @@ static bool                 uhrzeit_verstellt = false;
 
 unsigned long               currentMillis;
 
+static int richtung;
+static int xstart;
+static int ystart;
 static int xkor;
 static int ykor;
 static int dx;

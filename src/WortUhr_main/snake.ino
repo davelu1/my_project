@@ -1,50 +1,63 @@
 void right()
 {
-  int dx=1;
-  int dy=0;
+  dx=1;
+  dy=0;
   xkor+=dx;
   ykor+=dy;
 }
 void left()
 {
-  int dx=-1;
-  int dy=0;
+  dx=-1;
+  dy=0;
   xkor+=dx;
   ykor+=dy;
 }
 void up()
 {
-  int dx=0;
-  int dy=1;
+  dx=0;
+  dy=1;
   xkor+=dx;
   ykor+=dy;
 }
 void down()
 {
-  int dx=0;
-  int dy=-1;
+  dx=0;
+  dy=-1;
   xkor+=dx;
   ykor+=dy;
 }
   
-// Startet Snake
+/*----------Snake----------*/
 void LED_Snake(byte colorID, byte brightness)
 {
-
-  xkor=2;
-  ykor=5;
-  dx=1;
-  dy=0;
-  if (currentMillis == 0)
+  if(deltaDrehgeber == 0)
   {
-    currentMillis = millis();
-  }
-  LED_set( xkor, ykor,colorID,brightness);
+    xkor=2;
+    ykor=5;    
+    if (currentMillis == 0)
+    {
+      currentMillis = millis();
 
-  xkor+=dx;
-  ykor+=dy;
-  if (millis() > currentMillis + 500)
-  {
+    }
+
     LED_set( xkor, ykor,colorID,brightness);
+    if(deltaDrehgeber==0)
+    {
+
+      if (millis() > currentMillis + 500)
+      {
+        LED_set( xkor, ykor,colorID,brightness);
+      }
+      if(deltaDrehgeber==1)
+      {
+        right;
+        LED_set( xkor, ykor,colorID,brightness);
+      }      
+      if(deltaDrehgeber==-1)
+      {
+        left;
+        LED_set( xkor, ykor,colorID,brightness);
+      }
+    }
   }
 }
