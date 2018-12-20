@@ -293,6 +293,14 @@ void helligkeit_einstellen(void)
   LED_helligkeit(colorID, brightness);
 }
 
+
+void Snake_einstellen(void)
+{
+  snakeID = snakeID + deltaDrehgeber;
+  LED_clear;
+  LED_Snake(colorID, brightness);
+}
+
 // Stellt die Farbe der LED ein
 void farbe_einstellen(void)
 {
@@ -332,13 +340,6 @@ void OffWhite_einstellen(void)
   LED_OffWhite(colorID, brightness);
 }
 
-
-//Snake anzeigen
- void Snake_einstellen(void)
-{
-  LED_clear;
-  LED_Snake(colorID, brightness);
-}
 
 
 // Eine kleine Demo zum Anzeigen der Farbmoeglichkeiten der LED

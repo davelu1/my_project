@@ -28,36 +28,40 @@ void down()
 }
   
 /*----------Snake----------*/
-void LED_Snake(byte colorID, byte brightness)
+bool LED_Snake(byte colorID, byte brightness)
 {
-  if(deltaDrehgeber == 0)
+  xkor=2;
+  ykor=5; 
+  int startdelay=500;
+  if (timenow == 0)
   {
-    xkor=2;
-    ykor=5;    
-    if (currentMillis == 0)
-    {
-      currentMillis = millis();
+    timenow = 0;
+    timenow = millis();
+  }
 
-    }
-
+  if(millis() < timenow + startdelay)
+  {
     LED_set( xkor, ykor,colorID,brightness);
-    if(deltaDrehgeber==0)
-    {
+  }
+  if(deltaDrehgeber==1)
+  {
+    right();
+    LED_set( xkor, ykor,colorID,brightness);
+  }      
+  if(deltaDrehgeber==-1)
+  {
+    up();
+    LED_set( xkor, ykor,colorID,brightness);
+  }
+  if(deltaDrehgeber>=2)
+  {
+    down();
+    LED_set( xkor, ykor,colorID,brightness);
+  }
 
-      if (millis() > currentMillis + 500)
-      {
-        LED_set( xkor, ykor,colorID,brightness);
-      }
-      if(deltaDrehgeber==1)
-      {
-        right;
-        LED_set( xkor, ykor,colorID,brightness);
-      }      
-      if(deltaDrehgeber==-1)
-      {
-        left;
-        LED_set( xkor, ykor,colorID,brightness);
-      }
-    }
+  if(deltaDrehgeber<=-2)
+  {
+    left();
+    LED_set( xkor, ykor,colorID,brightness);
   }
 }

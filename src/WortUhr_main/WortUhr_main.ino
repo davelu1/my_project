@@ -25,8 +25,9 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ80
 #define SIZE_BRIGHTNESS     64  // Anzahl moeglicher Helligkeitswerte
 
 // Benoetigte Variablen deklarieren
-int                         colorID   = 16;
-int                         brightness = 10;
+int                         colorID        = 16;
+int                         snakeID        = 0;
+int                         brightness     = 10;
 int                         deltaDrehgeber = 0;
 int                         alphaDrehgeber = 0;
 
@@ -53,16 +54,16 @@ static unsigned long        intro_time = 0;
 static unsigned long        inaktiv_time = 0;
 static bool                 uhrzeit_verstellt = false;
 
-unsigned long               currentMillis;
+unsigned long               timenow;
 
-static int richtung;
-static int xstart;
-static int ystart;
-static int xkor;
-static int ykor;
-static int dx;
-static int dy;
-static int lenth;
+int richtung;
+int xstart;
+int ystart;
+int xkor;
+int ykor;
+int dx;
+int dy;
+int lenth;
 
 typedef enum EEProm_store_t
 {
@@ -70,7 +71,7 @@ typedef enum EEProm_store_t
     HELLIGKEIT,
     AMPM,
     OffWhite,
-    Snake,
+    SNAKE,
     FancyDemo
 } EEProm_store;
 
@@ -95,6 +96,7 @@ void setup() // Initialisierung, wird am Anfang nur einmal durchlaufen:
   LED_clear();
   colorID = EEPROM.read(COLOR);
   brightness = EEPROM.read(HELLIGKEIT);
+  snakeID = EEPROM.read(SNAKE);
   halbtage_anzeigen = (byte)(EEPROM.read(AMPM));
   initRTC();
 }
@@ -225,7 +227,7 @@ void loop()  // Endlosschleife:
       {
         inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen wenn Knopf gedreht
       }
-      currentMillis = 0;
+      timenow = 0;
       break;
       
      case 11: // Off White speichern
@@ -245,6 +247,7 @@ void loop()  // Endlosschleife:
       
      case 13: // Snake speichern
       inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
+      EEPROM.update(SNAKE, snakeID);
       sm_Button++; // sofort zum naechsten Schritt weiter
       break;
       
