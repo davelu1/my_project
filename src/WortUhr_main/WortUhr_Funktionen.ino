@@ -297,7 +297,6 @@ void helligkeit_einstellen(void)
 void Snake_einstellen(void)
 {
   snakeID = snakeID + deltaDrehgeber;
-  LED_clear;
   LED_Snake(colorID, brightness);
 }
 
