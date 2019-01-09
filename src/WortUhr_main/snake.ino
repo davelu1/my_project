@@ -1,4 +1,4 @@
-int velocity = 200;
+int velocity = 500;
 int snakeDirection = 4; // 1: right, 2: left, 3: up, 4: down
 int xapfel;
 int yapfel;
@@ -15,10 +15,6 @@ int snakeArr[4][2] = {
 /*----------Snake----------*/
 bool LED_Snake(byte colorID, byte brightness)
 {
-/*
-  Serial.print(timenow);
-  Serial.print(", ");
-  */
 if (deltaDrehgeber <= -1) 
 {
    switch (snakeDirection)
@@ -59,11 +55,7 @@ else if (deltaDrehgeber >= 1)
   if(timenow==0)
   {
     snakeArr[0][0] = 2;
-    snakeArr[0][1] = 5; // 2
-    /*
-    xkor=2;
-    ykor=5;
-    */ 
+    snakeArr[0][1] = 5;
   }
   else if (snakeDirection == 1) //nach rechts
   {
@@ -80,13 +72,13 @@ else if (deltaDrehgeber >= 1)
      }
      if (snakeLength > 2)  
      {
-        snakeArr[2][0] = snakeArr[0][0] - 2;
-        snakeArr[2][1] = snakeArr[0][1]    ;
+        snakeArr[2][0] = snakeArr[1][0] - 1;
+        snakeArr[2][1] = snakeArr[1][1]    ;
      }
      if (snakeLength > 3)  
      {
-        snakeArr[3][0] = snakeArr[0][0] - 3;
-        snakeArr[3][1] = snakeArr[0][1]    ;
+        snakeArr[3][0] = snakeArr[2][0] - 1;
+        snakeArr[3][1] = snakeArr[2][1]    ;
      }
   }
 
@@ -105,13 +97,13 @@ else if (deltaDrehgeber >= 1)
      }
      if (snakeLength > 2)  
      {
-        snakeArr[2][0] = snakeArr[0][0] + 2;
-        snakeArr[2][1] = snakeArr[0][1]    ;
+        snakeArr[2][0] = snakeArr[1][0] + 1;
+        snakeArr[2][1] = snakeArr[1][1]    ;
      }
      if (snakeLength > 3)  
      {
-        snakeArr[3][0] = snakeArr[0][0] + 3;
-        snakeArr[3][1] = snakeArr[0][1]    ;
+        snakeArr[3][0] = snakeArr[2][0] + 1;
+        snakeArr[3][1] = snakeArr[2][1]    ;
      }
    }
    else if (snakeDirection == 3) // nach oben
@@ -166,7 +158,7 @@ else if (deltaDrehgeber >= 1)
     delay(velocity);
     LED_clear;
 
-  // Körperglieder zeichnen 
+// Körperglieder zeichnen 
  if (snakeArr[1][0] > -1) {
     LED_set(snakeArr[1][0], snakeArr[1][1],colorID,brightness);
   } 
@@ -177,16 +169,11 @@ else if (deltaDrehgeber >= 1)
     LED_set(snakeArr[3][0], snakeArr[3][1],colorID,brightness);
   }
 
-  // Kopf zeichnen
+// Kopf zeichnen
   LED_set(snakeArr[0][0], snakeArr[0][1], 40, brightness);
   timenow += 1;
 
-  
-  //snakeArr[0][1]
-  /*if (head1 == xapfel && head2 == xapfel && head1 == yapfel && head2 == yapfel){
-    
-  }
-*/
+// Apfel erstellen + verschwinden lassen
   if(timenow <= 1 || snakeArr[0][1] == yapfel && snakeArr[0][0] == xapfel){
       xapfel=random(0,10);
       yapfel=random(0,10);
@@ -216,39 +203,3 @@ bool istGliedHinterKopfRechts()
     return false;
   }
 }
-  /*
-  int startdelay=500;
-  if (timenow == 0||timenow>=500)
-  {
-    delay(200);
-    timenow = millis();
-  }
-  if(timenow>=200)
-  {
-    if(millis() < timenow + startdelay)
-    {
-      LED_set( xkor, ykor,colorID,brightness);
-    }
-    if(deltaDrehgeber==1)
-    {
-      right();
-      LED_set( xkor, ykor,colorID,brightness);
-    }      
-    if(deltaDrehgeber==-1)
-    {
-      up();
-      LED_set( xkor, ykor,colorID,brightness);
-    }
-    if(deltaDrehgeber>=2)
-    {
-      down();
-      LED_set( xkor, ykor,colorID,brightness);
-    }
-  
-    if(deltaDrehgeber<=-2)
-    {
-      left();
-      LED_set( xkor, ykor,colorID,brightness);
-    }
-  }
-  */
