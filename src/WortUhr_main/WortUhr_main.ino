@@ -139,7 +139,7 @@ void loop()  // Endlosschleife:
   delay(20);                         // 20 millisekunden warten
 
  // Automatisches Verlassen des Bearbeitungsmodus nach 10 Sekunden
-  if ( (act_time - inaktiv_time) > 1000000) // Sind bereits 10 Sekunden seit letztem Zurücksetzen vergangen?
+  if ( (act_time - inaktiv_time) > 100000000) // Sind bereits 10 Sekunden seit letztem Zurücksetzen vergangen?
   {
     sm_Button = 1; // Dann gehe zu case 1: Uhrzeit anzeigen
   }
