@@ -3,7 +3,7 @@ int snakeDirection = 4; // 1: right, 2: left, 3: up, 4: down
 
 int snakeLength = 4;
 int snakeArr[4][2] = {
-      {2, 5},     // Kopf: x=2, y=5
+      {2, 5},         // Kopf: x=2, y=5
       {-1, -1},
       {-1, -1},
       {-1, -1}
@@ -37,7 +37,21 @@ if (deltaDrehgeber == 1)
 }
 else if (deltaDrehgeber == -1) 
 {
-  snakeDirection = 2;
+   switch (snakeDirection)
+   {
+      case 1:
+        snakeDirection = 3;
+        break;
+      case 2:
+        snakeDirection = 4;
+        break;
+      case 3:
+        snakeDirection = 2;
+        break;
+      case 4:
+        snakeDirection = 1;
+        break;
+   }
 }
   
   if(timenow==0)
