@@ -72,7 +72,8 @@ typedef enum EEProm_store_t
     AMPM,
     OffWhite,
     SNAKE,
-    FancyDemo
+    FancyDemo,
+    END
 } EEProm_store;
 
 typedef enum FARBEN_t
@@ -114,7 +115,7 @@ void loop()  // Endlosschleife:
   if(Drehgeber_knopf_gedrueckt()) // Wurde Knopf gedrueckt?
   {
     sm_Button++;
-    if(sm_Button>15)
+    if(sm_Button>17)
     {
       sm_Button = 1;
     }
@@ -235,8 +236,21 @@ void loop()  // Endlosschleife:
       sm_Button++; // sofort zum naechsten Schritt weiter
       break;
 
+    case 12: // Reset Fancy Demo
+      LED_clear();
+      x=0;
+      y=0;
+      part=0;
+      sm_Button++; // sofort zum naechsten Schritt weiter
+      break;
 
-     case 12: //Snake
+    case 13: // Fancy Demo
+      fancy_demo();
+      inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
+      break;
+
+      
+     case 14: //Snake
       LED_clear();
       Snake_einstellen();
       if (deltaDrehgeber != 0)
@@ -245,27 +259,31 @@ void loop()  // Endlosschleife:
       }
       break;
       
-     case 13: // Snake speichern
+     case 15: // Snake speichern
       inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
       EEPROM.update(SNAKE, snakeID);
       sm_Button++; // sofort zum naechsten Schritt weiter
       break;
       
+
+     case 16: //END
+      END_einstellen();
+      if (deltaDrehgeber != 0)
+      {
+        inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen wenn Knopf gedreht
+      }
+      timenow = 0;
+      if (deltaDrehgeber != 0)
+      {
+        sm_Button = 14;
+      }
+      break;
       
-    case 14: // Reset Fancy Demo
-      LED_clear();
-      x=0;
-      y=0;
-      part=0;
+     case 17: // END
+      inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
       sm_Button++; // sofort zum naechsten Schritt weiter
       break;
-
-    case 15: // Fancy Demo
-      fancy_demo();
-      inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
-      break;
-
-
+      
     default:
       sm_Button = 0;
       break;

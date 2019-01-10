@@ -504,3 +504,41 @@ void LED_OffWhite(byte colorID, byte brightness)
   LED_set ( 9, 10,colorID,brightness);
   LED_set ( 10, 10,colorID,brightness);
 }
+
+// Gibt END aus
+void LED_END(byte colorID, byte brightness)
+{
+  LED_set ( 0, 7,random(58),brightness);
+  LED_set ( 0, 6,random(58),brightness);
+  LED_set ( 0, 5,random(58),brightness);
+  LED_set ( 0, 4,random(58),brightness);
+  LED_set ( 0, 3,random(58),brightness);
+  LED_set ( 1, 7,random(58),brightness);
+  LED_set ( 1, 5,random(58),brightness);
+  LED_set ( 1, 3,random(58),brightness);
+  LED_set ( 3, 7,random(58),brightness);
+  LED_set ( 3, 6,random(58),brightness);
+  LED_set ( 3, 5,random(58),brightness);
+  LED_set ( 3, 4,random(58),brightness);
+  LED_set ( 3, 3,random(58),brightness);
+  LED_set ( 4, 6,random(58),brightness);
+  LED_set ( 4, 5,random(58),brightness);
+  LED_set ( 5, 5,random(58),brightness);
+  LED_set ( 5, 4,random(58),brightness);
+  LED_set ( 6, 7,random(58),brightness);
+  LED_set ( 6, 6,random(58),brightness);
+  LED_set ( 6, 5,random(58),brightness);
+  LED_set ( 6, 4,random(58),brightness);
+  LED_set ( 6, 3,random(58),brightness);
+  LED_set ( 8, 7,random(58),brightness);
+  LED_set ( 8, 6,random(58),brightness);
+  LED_set ( 8, 5,random(58),brightness);
+  LED_set ( 8, 4,random(58),brightness);
+  LED_set ( 8, 3,random(58),brightness);
+  LED_set ( 9, 7,random(58),brightness);
+  LED_set ( 9, 3,random(58),brightness);
+  LED_set ( 10, 6,random(58),brightness);
+  LED_set ( 10, 5,random(58),brightness);
+  LED_set ( 10, 4,random(58),brightness);
+  delay(200);
+}

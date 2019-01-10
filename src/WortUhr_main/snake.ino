@@ -98,7 +98,7 @@ if (snakeDirection == 1) // nach rechts
   snakeArr[0][0] += 1; 
   if (snakeArr[0][0] == 11) 
   {
-    snakeArr[0][0] = 0;
+    sm_Button=16;
   }
 }
 
@@ -107,7 +107,7 @@ else if (snakeDirection == 2) // nach links
   snakeArr[0][0] -=1; 
   if (snakeArr[0][0] == -1) 
   {
-    snakeArr[0][0] = 10;
+    sm_Button=16;
   }
 }
 
@@ -116,7 +116,7 @@ else if (snakeDirection == 3) // nach oben
   snakeArr[0][1] +=1; 
   if (snakeArr[0][1] == 11) 
   {
-    snakeArr[0][1] = 0;
+    sm_Button=16;
   }
 }
 
@@ -125,7 +125,7 @@ else if (snakeDirection == 4) // nach unten
   snakeArr[0][1] -=1; 
   if (snakeArr[0][1] == -1) 
   {
-  snakeArr[0][1] = 10;
+  sm_Button=16;
   }
 }
 
@@ -137,7 +137,7 @@ else if (snakeDirection == 4) // nach unten
 // Kopf zeichnen
   LED_set(snakeArr[0][0], snakeArr[0][1], 40, brightness);
   timenow += 1;
-  
+
 // Apfel erstellen + verschwinden lassen
   if(timenow <= 1 || snakeArr[0][1] == yapfel && snakeArr[0][0] == xapfel)
   {

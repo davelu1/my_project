@@ -339,7 +339,12 @@ void OffWhite_einstellen(void)
   LED_OffWhite(colorID, brightness);
 }
 
-
+//END 
+void END_einstellen(void)
+{
+  LED_clear();
+  LED_END(colorID, brightness);
+}
 
 // Eine kleine Demo zum Anzeigen der Farbmoeglichkeiten der LED
 void fancy_demo(void)
