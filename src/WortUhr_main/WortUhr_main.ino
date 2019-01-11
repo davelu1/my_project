@@ -279,11 +279,6 @@ void loop()  // Endlosschleife:
       }
       break;
       
-     case 17: // END
-      inaktiv_time = act_time; // Bearbeitungsmodus timeout zurücksetzen
-      sm_Button++; // sofort zum naechsten Schritt weiter
-      break;
-      
     default:
       sm_Button = 0;
       break;

@@ -1,4 +1,4 @@
-int velocity = 200;
+int velocity = 250;
 int snakeDirection = 1; // 1: right, 2: left, 3: up, 4: down
 int xapfel;
 int yapfel;
