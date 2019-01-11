@@ -9,6 +9,7 @@ int snakeArr[4][2] = {
     {-1, -1},
     {-1, -1}
 };
+
 /*----------Snake----------*/
 bool LED_Snake(byte colorID, byte brightness)
 {
@@ -48,12 +49,14 @@ bool LED_Snake(byte colorID, byte brightness)
       break;
     }
   }
+  
   //Kopf Startposition
   if(timenow <= 1)
   {
     snakeArr[0][0] = 3;
     snakeArr[0][1] = 5;
   }
+  
   //Körper Startposition
   if(timenow <= 1)
   {
@@ -64,9 +67,11 @@ bool LED_Snake(byte colorID, byte brightness)
     snakeArr[3][0] = 3 - 3;
     snakeArr[3][1] = 5;
   }
+  
 // Kopf zeichnen
   LED_set(snakeArr[0][0], snakeArr[0][1], 40, brightness);
   timenow += 1;
+  
 // Körperglieder zeichnen
   if (snakeArr[1][0] > -1)
   {
@@ -99,6 +104,7 @@ if (snakeDirection == 1) // nach rechts
   if (snakeArr[0][0] == 11) 
   {
     sm_Button=16;
+    snakeDirection = 1;
   }
 }
 
@@ -108,6 +114,7 @@ else if (snakeDirection == 2) // nach links
   if (snakeArr[0][0] == -1) 
   {
     sm_Button=16;
+    snakeDirection = 1;
   }
 }
 
@@ -117,15 +124,17 @@ else if (snakeDirection == 3) // nach oben
   if (snakeArr[0][1] == 11) 
   {
     sm_Button=16;
+    snakeDirection = 1;
   }
 }
 
 else if (snakeDirection == 4) // nach unten
 {
   snakeArr[0][1] -=1; 
-  if (snakeArr[0][1] == -1) 
+  if (snakeArr[0][1] == -1)
   {
   sm_Button=16;
+  snakeDirection = 1;
   }
 }
 
